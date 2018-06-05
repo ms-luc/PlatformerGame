@@ -26,13 +26,13 @@ public class CameraController : MonoBehaviour {
 
     void Start ()
     {
-        offset = transform.position - player.transform.position;
+        //offset = transform.position - player.transform.position;
     }
     
     void LateUpdate ()
     {
-
-        transform.position = player.transform.position + offset;
+        transform.position = player.transform.position;
+        //transform.position = player.transform.position + offset;
 
         /*
          * ROTATION OF THE CAMERA
@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour {
 
         camRotCont.CameraRotate();
 
-        Debug.Log("Tilt val: " + tiltAroundY);
+        //Debug.Log("Tilt val: " + tiltAroundY);
 
     }
 

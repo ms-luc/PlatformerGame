@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject camera;
 
+    private Vector3 checkpoint;
+
     public float move_speed;
     public float jump_force;
 
@@ -29,8 +31,20 @@ public class PlayerController : MonoBehaviour {
 
         m_MovementAxisName = "Vertical";
         m_TurnAxisName = "Horizontal";
+
+        checkpoint = transform.position;
     }
-    
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown("r"))
+            transform.position = checkpoint;
+
+
+
+    }
+
 
     private void FixedUpdate()
     {
@@ -90,6 +104,14 @@ public class PlayerController : MonoBehaviour {
 
         //Debug.Log("On ground: " + onGround);
 
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Checkpoint")
+            checkpoint = other.gameObject.transform.position;
+
+        //Debug.Log("In collider");
     }
 
 }
